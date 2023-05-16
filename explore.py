@@ -12,9 +12,14 @@ data = data.drop(axis=1, columns=['Quote Tweets', 'Views']) # columns which are 
 
 print("Number of empty values per column:")
 print(data.isnull().sum())
-print("\n")
+print()
 
 keywords_list = set([phrase.lower() for phrase in set(data['Keywords'])])
 keyword_set = sorted(set([word for phrase in keywords_list for word in phrase.split()]))
 print("Keywords used:")
 print(keyword_set)
+print()
+
+tweet_type_list = [typ.lower() for value in data['Tweet Type'] for typ in value.split(',')]
+print("Number of each tweet type:")
+print(pd.DataFrame(tweet_type_list).value_counts())
