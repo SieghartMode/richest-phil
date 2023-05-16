@@ -88,86 +88,172 @@
 						<p>From the Pandas package, we used the dropna and drop methods to remove empty rows, empty columns, and columns with irrelevant data. We also removed the Quote Tweets and Views columns since they were mostly empty.</p>
 						&nbsp
 						
+						<h3>Type formatting</h3>
+						<p>The type format of all columns with qualitative data was set to 'Category', while the 'Date posted' column was read as 'datetime', and all the quantitative variables were set to the 'int' type.</p>
+
+						<table id="T_7dcd6">
+						  <tbody>
+							<tr>
+							  <th id="T_7dcd6_level0_row0" class="row_heading level0 row0" >Keywords</th>
+							  <td id="T_7dcd6_row0_col0" class="data row0 col0" >category</td>
+							</tr>
+							<tr>
+							  <th id="T_7dcd6_level0_row1" class="row_heading level0 row1" >Account handle</th>
+							  <td id="T_7dcd6_row1_col0" class="data row1 col0" >category</td>
+							</tr>
+							<tr>
+							  <th id="T_7dcd6_level0_row2" class="row_heading level0 row2" >Account name</th>
+							  <td id="T_7dcd6_row2_col0" class="data row2 col0" >category</td>
+							</tr>
+							<tr>
+							  <th id="T_7dcd6_level0_row3" class="row_heading level0 row3" >Account bio</th>
+							  <td id="T_7dcd6_row3_col0" class="data row3 col0" >category</td>
+							</tr>
+							<tr>
+							  <th id="T_7dcd6_level0_row4" class="row_heading level0 row4" >Account type</th>
+							  <td id="T_7dcd6_row4_col0" class="data row4 col0" >category</td>
+							</tr>
+							<tr>
+							  <th id="T_7dcd6_level0_row5" class="row_heading level0 row5" >Joined</th>
+							  <td id="T_7dcd6_row5_col0" class="data row5 col0" >category</td>
+							</tr>
+							<tr>
+							  <th id="T_7dcd6_level0_row6" class="row_heading level0 row6" >Following</th>
+							  <td id="T_7dcd6_row6_col0" class="data row6 col0" >int32</td>
+							</tr>
+							<tr>
+							  <th id="T_7dcd6_level0_row7" class="row_heading level0 row7" >Followers</th>
+							  <td id="T_7dcd6_row7_col0" class="data row7 col0" >int32</td>
+							</tr>
+							<tr>
+							  <th id="T_7dcd6_level0_row8" class="row_heading level0 row8" >Location</th>
+							  <td id="T_7dcd6_row8_col0" class="data row8 col0" >category</td>
+							</tr>
+							<tr>
+							  <th id="T_7dcd6_level0_row9" class="row_heading level0 row9" >Tweet</th>
+							  <td id="T_7dcd6_row9_col0" class="data row9 col0" >category</td>
+							</tr>
+							<tr>
+							  <th id="T_7dcd6_level0_row10" class="row_heading level0 row10" >Tweet Translated</th>
+							  <td id="T_7dcd6_row10_col0" class="data row10 col0" >category</td>
+							</tr>
+							<tr>
+							  <th id="T_7dcd6_level0_row11" class="row_heading level0 row11" >Tweet Type</th>
+							  <td id="T_7dcd6_row11_col0" class="data row11 col0" >category</td>
+							</tr>
+							<tr>
+							  <th id="T_7dcd6_level0_row12" class="row_heading level0 row12" >Date posted</th>
+							  <td id="T_7dcd6_row12_col0" class="data row12 col0" >datetime64[ns]</td>
+							</tr>
+							<tr>
+							  <th id="T_7dcd6_level0_row13" class="row_heading level0 row13" >Content type</th>
+							  <td id="T_7dcd6_row13_col0" class="data row13 col0" >category</td>
+							</tr>
+							<tr>
+							  <th id="T_7dcd6_level0_row14" class="row_heading level0 row14" >Likes</th>
+							  <td id="T_7dcd6_row14_col0" class="data row14 col0" >int32</td>
+							</tr>
+							<tr>
+							  <th id="T_7dcd6_level0_row15" class="row_heading level0 row15" >Replies</th>
+							  <td id="T_7dcd6_row15_col0" class="data row15 col0" >int32</td>
+							</tr>
+							<tr>
+							  <th id="T_7dcd6_level0_row16" class="row_heading level0 row16" >Retweets</th>
+							  <td id="T_7dcd6_row16_col0" class="data row16 col0" >int32</td>
+							</tr>
+						  </tbody>
+						</table>
+						&nbsp
+
 						<h3>Preliminary statistics from numerical columns</h3>
-				<table id="T_bf116">
-					<thead>
-						<tr>
-							<th class="blank level0" >&nbsp;</th>
-							<th id="T_bf116_level0_col0" class="col_heading level0 col0" >Following</th>
-							<th id="T_bf116_level0_col1" class="col_heading level0 col1" >Followers</th>
-							<th id="T_bf116_level0_col2" class="col_heading level0 col2" >Likes</th>
-							<th id="T_bf116_level0_col3" class="col_heading level0 col3" >Replies</th>
-							<th id="T_bf116_level0_col4" class="col_heading level0 col4" >Retweets</th>
-						</tr>
-					</thead>
-				  <tbody>
-					<tr>
-					  <th id="T_bf116_level0_row0" class="row_heading level0 row0" >count</th>
-					  <td id="T_bf116_row0_col0" class="data row0 col0" >163.000000</td>
-					  <td id="T_bf116_row0_col1" class="data row0 col1" >163.000000</td>
-					  <td id="T_bf116_row0_col2" class="data row0 col2" >163.000000</td>
-					  <td id="T_bf116_row0_col3" class="data row0 col3" >163.000000</td>
-					  <td id="T_bf116_row0_col4" class="data row0 col4" >163.000000</td>
-					</tr>
-					<tr>
-					  <th id="T_bf116_level0_row1" class="row_heading level0 row1" >mean</th>
-					  <td id="T_bf116_row1_col0" class="data row1 col0" >400.134969</td>
-					  <td id="T_bf116_row1_col1" class="data row1 col1" >1332.478528</td>
-					  <td id="T_bf116_row1_col2" class="data row1 col2" >4.306748</td>
-					  <td id="T_bf116_row1_col3" class="data row1 col3" >1.196319</td>
-					  <td id="T_bf116_row1_col4" class="data row1 col4" >1.509202</td>
-					</tr>
-					<tr>
-					  <th id="T_bf116_level0_row2" class="row_heading level0 row2" >std</th>
-					  <td id="T_bf116_row2_col0" class="data row2 col0" >511.066429</td>
-					  <td id="T_bf116_row2_col1" class="data row2 col1" >10464.122524</td>
-					  <td id="T_bf116_row2_col2" class="data row2 col2" >19.217832</td>
-					  <td id="T_bf116_row2_col3" class="data row2 col3" >3.453141</td>
-					  <td id="T_bf116_row2_col4" class="data row2 col4" >6.755307</td>
-					</tr>
-					<tr>
-					  <th id="T_bf116_level0_row3" class="row_heading level0 row3" >min</th>
-					  <td id="T_bf116_row3_col0" class="data row3 col0" >0.000000</td>
-					  <td id="T_bf116_row3_col1" class="data row3 col1" >1.000000</td>
-					  <td id="T_bf116_row3_col2" class="data row3 col2" >0.000000</td>
-					  <td id="T_bf116_row3_col3" class="data row3 col3" >0.000000</td>
-					  <td id="T_bf116_row3_col4" class="data row3 col4" >0.000000</td>
-					</tr>
-					<tr>
-					  <th id="T_bf116_level0_row4" class="row_heading level0 row4" >25%</th>
-					  <td id="T_bf116_row4_col0" class="data row4 col0" >74.500000</td>
-					  <td id="T_bf116_row4_col1" class="data row4 col1" >20.000000</td>
-					  <td id="T_bf116_row4_col2" class="data row4 col2" >0.000000</td>
-					  <td id="T_bf116_row4_col3" class="data row4 col3" >0.000000</td>
-					  <td id="T_bf116_row4_col4" class="data row4 col4" >0.000000</td>
-					</tr>
-					<tr>
-					  <th id="T_bf116_level0_row5" class="row_heading level0 row5" >50%</th>
-					  <td id="T_bf116_row5_col0" class="data row5 col0" >195.000000</td>
-					  <td id="T_bf116_row5_col1" class="data row5 col1" >196.000000</td>
-					  <td id="T_bf116_row5_col2" class="data row5 col2" >0.000000</td>
-					  <td id="T_bf116_row5_col3" class="data row5 col3" >0.000000</td>
-					  <td id="T_bf116_row5_col4" class="data row5 col4" >0.000000</td>
-					</tr>
-					<tr>
-					  <th id="T_bf116_level0_row6" class="row_heading level0 row6" >75%</th>
-					  <td id="T_bf116_row6_col0" class="data row6 col0" >529.500000</td>
-					  <td id="T_bf116_row6_col1" class="data row6 col1" >523.500000</td>
-					  <td id="T_bf116_row6_col2" class="data row6 col2" >1.500000</td>
-					  <td id="T_bf116_row6_col3" class="data row6 col3" >1.000000</td>
-					  <td id="T_bf116_row6_col4" class="data row6 col4" >0.000000</td>
-					</tr>
-					<tr>
-					  <th id="T_bf116_level0_row7" class="row_heading level0 row7" >max</th>
-					  <td id="T_bf116_row7_col0" class="data row7 col0" >2645.000000</td>
-					  <td id="T_bf116_row7_col1" class="data row7 col1" >133461.000000</td>
-					  <td id="T_bf116_row7_col2" class="data row7 col2" >215.000000</td>
-					  <td id="T_bf116_row7_col3" class="data row7 col3" >27.000000</td>
-					  <td id="T_bf116_row7_col4" class="data row7 col4" >62.000000</td>
-					</tr>
-				  </tbody>
-				</table>
-				<p>As can be seen, the numerical columns have complete data for each row.</p>
+						<table id="T_63b5f">
+						  <thead>
+							<tr>
+							  <th class="blank level0" >&nbsp;</th>
+							  <th id="T_63b5f_level0_col0" class="col_heading level0 col0" >Following</th>
+							  <th id="T_63b5f_level0_col1" class="col_heading level0 col1" >Followers</th>
+							  <th id="T_63b5f_level0_col2" class="col_heading level0 col2" >Date posted</th>
+							  <th id="T_63b5f_level0_col3" class="col_heading level0 col3" >Likes</th>
+							  <th id="T_63b5f_level0_col4" class="col_heading level0 col4" >Replies</th>
+							  <th id="T_63b5f_level0_col5" class="col_heading level0 col5" >Retweets</th>
+							</tr>
+						  </thead>
+						  <tbody>
+							<tr>
+							  <th id="T_63b5f_level0_row0" class="row_heading level0 row0" >count</th>
+							  <td id="T_63b5f_row0_col0" class="data row0 col0" >163.000000</td>
+							  <td id="T_63b5f_row0_col1" class="data row0 col1" >163.000000</td>
+							  <td id="T_63b5f_row0_col2" class="data row0 col2" >163</td>
+							  <td id="T_63b5f_row0_col3" class="data row0 col3" >163.000000</td>
+							  <td id="T_63b5f_row0_col4" class="data row0 col4" >163.000000</td>
+							  <td id="T_63b5f_row0_col5" class="data row0 col5" >163.000000</td>
+							</tr>
+							<tr>
+							  <th id="T_63b5f_level0_row1" class="row_heading level0 row1" >mean</th>
+							  <td id="T_63b5f_row1_col0" class="data row1 col0" >400.134969</td>
+							  <td id="T_63b5f_row1_col1" class="data row1 col1" >1332.478528</td>
+							  <td id="T_63b5f_row1_col2" class="data row1 col2" >2019-04-04 05:43:31.288343552</td>
+							  <td id="T_63b5f_row1_col3" class="data row1 col3" >4.306748</td>
+							  <td id="T_63b5f_row1_col4" class="data row1 col4" >1.196319</td>
+							  <td id="T_63b5f_row1_col5" class="data row1 col5" >1.509202</td>
+							</tr>
+							<tr>
+							  <th id="T_63b5f_level0_row2" class="row_heading level0 row2" >min</th>
+							  <td id="T_63b5f_row2_col0" class="data row2 col0" >0.000000</td>
+							  <td id="T_63b5f_row2_col1" class="data row2 col1" >1.000000</td>
+							  <td id="T_63b5f_row2_col2" class="data row2 col2" >2016-02-05 19:49:00</td>
+							  <td id="T_63b5f_row2_col3" class="data row2 col3" >0.000000</td>
+							  <td id="T_63b5f_row2_col4" class="data row2 col4" >0.000000</td>
+							  <td id="T_63b5f_row2_col5" class="data row2 col5" >0.000000</td>
+							</tr>
+							<tr>
+							  <th id="T_63b5f_level0_row3" class="row_heading level0 row3" >25%</th>
+							  <td id="T_63b5f_row3_col0" class="data row3 col0" >74.500000</td>
+							  <td id="T_63b5f_row3_col1" class="data row3 col1" >20.000000</td>
+							  <td id="T_63b5f_row3_col2" class="data row3 col2" >2016-10-05 13:45:30</td>
+							  <td id="T_63b5f_row3_col3" class="data row3 col3" >0.000000</td>
+							  <td id="T_63b5f_row3_col4" class="data row3 col4" >0.000000</td>
+							  <td id="T_63b5f_row3_col5" class="data row3 col5" >0.000000</td>
+							</tr>
+							<tr>
+							  <th id="T_63b5f_level0_row4" class="row_heading level0 row4" >50%</th>
+							  <td id="T_63b5f_row4_col0" class="data row4 col0" >195.000000</td>
+							  <td id="T_63b5f_row4_col1" class="data row4 col1" >196.000000</td>
+							  <td id="T_63b5f_row4_col2" class="data row4 col2" >2019-05-14 18:25:00</td>
+							  <td id="T_63b5f_row4_col3" class="data row4 col3" >0.000000</td>
+							  <td id="T_63b5f_row4_col4" class="data row4 col4" >0.000000</td>
+							  <td id="T_63b5f_row4_col5" class="data row4 col5" >0.000000</td>
+							</tr>
+							<tr>
+							  <th id="T_63b5f_level0_row5" class="row_heading level0 row5" >75%</th>
+							  <td id="T_63b5f_row5_col0" class="data row5 col0" >529.500000</td>
+							  <td id="T_63b5f_row5_col1" class="data row5 col1" >523.500000</td>
+							  <td id="T_63b5f_row5_col2" class="data row5 col2" >2021-09-22 13:38:30</td>
+							  <td id="T_63b5f_row5_col3" class="data row5 col3" >1.500000</td>
+							  <td id="T_63b5f_row5_col4" class="data row5 col4" >1.000000</td>
+							  <td id="T_63b5f_row5_col5" class="data row5 col5" >0.000000</td>
+							</tr>
+							<tr>
+							  <th id="T_63b5f_level0_row6" class="row_heading level0 row6" >max</th>
+							  <td id="T_63b5f_row6_col0" class="data row6 col0" >2645.000000</td>
+							  <td id="T_63b5f_row6_col1" class="data row6 col1" >133461.000000</td>
+							  <td id="T_63b5f_row6_col2" class="data row6 col2" >2022-12-04 22:31:00</td>
+							  <td id="T_63b5f_row6_col3" class="data row6 col3" >215.000000</td>
+							  <td id="T_63b5f_row6_col4" class="data row6 col4" >27.000000</td>
+							  <td id="T_63b5f_row6_col5" class="data row6 col5" >62.000000</td>
+							</tr>
+							<tr>
+							  <th id="T_63b5f_level0_row7" class="row_heading level0 row7" >std</th>
+							  <td id="T_63b5f_row7_col0" class="data row7 col0" >511.066429</td>
+							  <td id="T_63b5f_row7_col1" class="data row7 col1" >10464.122524</td>
+							  <td id="T_63b5f_row7_col2" class="data row7 col2" >nan</td>
+							  <td id="T_63b5f_row7_col3" class="data row7 col3" >19.217832</td>
+							  <td id="T_63b5f_row7_col4" class="data row7 col4" >3.453141</td>
+							  <td id="T_63b5f_row7_col5" class="data row7 col5" >6.755307</td>
+							</tr>
+						  </tbody>
+						</table>	
+						<p>As can be seen, the numerical columns have complete data for each row. We can clearly see that there are outliers for the Following, Followers, Likes, Replies, and Retweets columns, so we will remove these data and compute the statistics again.</p>
 
 			</article>
 
