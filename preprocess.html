@@ -81,15 +81,17 @@
 				<div class="container">
 					<header>
 						<h2>Here's how we preprocessed our data.</h2>
-						<p> Please refer to this Colab notebook (<a href="#">INSERT LINK</a>) for the codes used in the following steps.</p>
+						<p> Please refer to this <a href="https://colab.research.google.com/drive/1Ywb-BkMapxfFcfDOlBPs7PAoAwN4WeEb?usp=sharing"> Colab notebook</a> for the codes used in the following steps.</p>
 						&nbsp
 
 						<h3>Handling missing values</h3>
-						<p>From the Pandas package, we used the dropna and drop methods to remove empty rows, empty columns, and columns with irrelevant data. We also removed the Quote Tweets and Views columns since they were mostly empty.</p>
+						<p>In code block 1, we used the Pandas package's dropna and drop methods to remove empty rows, empty columns, and columns with irrelevant data. We also removed the Quote Tweets and Views columns since they were mostly empty.</p>
+						&nbsp
+						<p>In code block 2, we imputed the missing location and account bio values with the strings 'NO LOCATION' and 'NO BIO' respectively. </p>
 						&nbsp
 						
 						<h3>Type formatting</h3>
-						<p>The type format of all columns with qualitative data was set to 'Category', while the 'Date posted' column was read as 'datetime', and all the quantitative variables were set to the 'int' type.</p>
+						<p>In code block 3, the type format of all columns with qualitative data was set to 'Category', while the 'Date posted' column was read as 'datetime', and all the quantitative variables were set to the 'int' type.</p>
 
 						<table id="T_7dcd6">
 						  <tbody>
@@ -254,6 +256,9 @@
 						  </tbody>
 						</table>	
 						<p>As can be seen, the numerical columns have complete data for each row. We can clearly see that there are outliers for the Following, Followers, Likes, Replies, and Retweets columns, so we will remove these data and compute the statistics again.</p>
+
+						<h3>Dealing with outliers</h3>
+						<p>We computed the z-scores of all </p>
 
 			</article>
 
