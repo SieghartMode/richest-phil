@@ -74,4 +74,24 @@ category_mapping = {
 
 data['Content type'] = data['Content type'].map(category_mapping)
 
+def date_to_bin(date):
+  return 12 * (date.year - 2016) + date.month - 1
+data['Bin'] = data['Date posted'].dt.date.map(date_to_bin)
+
+start_date_2016 = pd.to_datetime('2016-01-01 00:00:00')
+end_date_2016 = pd.to_datetime('2016-05-09 23:59:59')
+
+start_date_2019 = pd.to_datetime('2018-10-12 00:00:00')
+end_date_2019 = pd.to_datetime('2019-05-13 23:59:59')
+
+start_date_2022 = pd.to_datetime('2021-10-01 00:00:00')
+end_date_2022 = pd.to_datetime('2022-05-09 23:59:59')
+
+data['Date posted'] = pd.to_datetime(data['Date posted'])
+
+data['Elections'] = data['Date posted'].apply(lambda x: 1 if (start_date_2016 <= x <= end_date_2016) or 
+                                                                  (start_date_2019 <= x <= end_date_2019) or 
+                                                                  (start_date_2022 <= x <= end_date_2022) 
+                                                                  else 0)
+
 data.to_csv('./preprocessed.csv')
