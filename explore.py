@@ -10,6 +10,8 @@ data = data.dropna(axis=1, how='all') # empty columns
 data = data.drop(axis=1, columns=['ID', 'Timestamp', 'Tweet URL', 'Group', 'Collector', 'Category', 'Topic', 'Screenshot', 'Reasoning', 'Remarks']) # columns with irrelevant data
 data = data.drop(axis=1, columns=['Tweet Translated', 'Quote Tweets', 'Views']) # columns which are mostly empty
 
+data = data.drop(labels=[18,23,48,103,109,150])
+
 # impute missing bio and location
 data['Account bio'].fillna('NO BIO', inplace=True)
 data['Location'].fillna('NO LOCATION', inplace=True)
@@ -44,5 +46,6 @@ print()
 
 print("Numerical data statistics:")
 print(data.describe(datetime_is_numeric=True))
+
 
 data.to_csv('./preprocessed.csv')
