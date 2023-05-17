@@ -1,5 +1,6 @@
 import pandas as pd
 import csv
+from scipy import stats
 
 csv_path = 'data.csv'
 data = pd.read_csv(csv_path, sep=',', parse_dates = ['Joined', 'Date posted'])
@@ -11,6 +12,7 @@ data = data.drop(axis=1, columns=['ID', 'Timestamp', 'Tweet URL', 'Group', 'Coll
 data = data.drop(axis=1, columns=['Tweet Translated', 'Quote Tweets', 'Views']) # columns which are mostly empty
 
 data = data.drop(labels=[18,23,48,103,109,150])
+data = data.reset_index(drop = True)
 
 # impute missing bio and location
 data['Account bio'].fillna('NO BIO', inplace=True)
@@ -47,5 +49,29 @@ print()
 print("Numerical data statistics:")
 print(data.describe(datetime_is_numeric=True))
 
+columns = ['Following', 'Followers', 'Likes', 'Replies', 'Retweets']
+for column_name in columns: 
+  data['{}_zscore'.format(column_name)] = stats.zscore(data[column_name])
+
+category_mapping = {
+   'Identified': 0,
+   'Anonymous': 1,
+   'Media': 2
+}
+
+data['Account type'] = data['Account type'].map(category_mapping)
+data['Text'] = data['Tweet Type'].str.contains('Text').astype(int)
+data['Image'] = data['Tweet Type'].str.contains('Image').astype(int)
+data['Video'] = data['Tweet Type'].str.contains('Video').astype(int)
+data['URL'] = data['Tweet Type'].str.contains('URL').astype(int)
+data['Reply'] = data['Tweet Type'].str.contains('Reply').astype(int)
+
+category_mapping = {
+   'Rational': 0,
+   'Emotional': 1,
+   'Transactional': 2
+}
+
+data['Content type'] = data['Content type'].map(category_mapping)
 
 data.to_csv('./preprocessed.csv')
