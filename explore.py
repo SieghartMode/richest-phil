@@ -8,7 +8,10 @@ data = pd.read_csv(csv_path, sep=',', parse_dates = ['Joined', 'Date posted'])
 data = data.dropna(subset=['Timestamp']) # empty rows
 data = data.dropna(axis=1, how='all') # empty columns
 data = data.drop(axis=1, columns=['ID', 'Timestamp', 'Tweet URL', 'Group', 'Collector', 'Category', 'Topic', 'Screenshot', 'Reasoning', 'Remarks']) # columns with irrelevant data
-data = data.drop(axis=1, columns=['Quote Tweets', 'Views']) # columns which are mostly empty
+data = data.drop(axis=1, columns=['Tweet Translated', 'Quote Tweets', 'Views']) # columns which are mostly empty
+
+data['Account bio'].fillna('NO BIO', inplace=True)
+data['Location'].fillna('NO LOCATION', inplace=True)
 
 for col in data:
   if col in ['Following', 'Followers', 'Likes', 'Replies', 'Retweets']:
@@ -18,7 +21,6 @@ for col in data:
 print("Column types:")
 print(data.dtypes)
 print()
-
 
 print("Number of empty values per column:")
 print(data.isnull().sum())
@@ -30,7 +32,7 @@ print("Keywords used:")
 print(keyword_set)
 print()
 
-tweet_type_list = [typ.lower() for value in data['Tweet Type'] for typ in value.split(',')]
+tweet_type_list = [typ.lower().strip() for value in data['Tweet Type'] for typ in value.split(',')]
 print("Number of each tweet type:")
 print(pd.DataFrame(tweet_type_list).value_counts())
 print()
@@ -41,3 +43,5 @@ print()
 
 print("Numerical data statistics:")
 print(data.describe(datetime_is_numeric=True))
+
+data.to_csv('./preprocessed.csv')
