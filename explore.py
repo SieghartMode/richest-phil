@@ -1,9 +1,22 @@
 import pandas as pd
 import csv
 from scipy import stats
+import matplotlib
+import matplotlib.pyplot as plt
+import numpy as np
 
 csv_path = 'data.csv'
-data = pd.read_csv(csv_path, sep=',', parse_dates = ['Joined', 'Date posted'])
+data = pd.read_csv(csv_path, sep=',', parse_dates = ['Date posted'], dayfirst=True)
+
+def date_to_bin(date):
+  return 12 * (date.year - 2016) + date.month - 1
+data['Bin'] = data['Date posted'].dt.date.map(date_to_bin)
+
+count_bins = [[0] * 12 for i in range(7)]
+for i in range(7):
+  for j in range(12):
+    count_bins[i][j] = (data['Bin'] == 12 * i + j).sum()
+print(count_bins)
 
 # Removing irrelevant rows and columns
 data = data.dropna(subset=['Timestamp']) # empty rows
@@ -74,10 +87,12 @@ category_mapping = {
 
 data['Content type'] = data['Content type'].map(category_mapping)
 
-def date_to_bin(date):
-  return 12 * (date.year - 2016) + date.month - 1
-data['Bin'] = data['Date posted'].dt.date.map(date_to_bin)
+count_bins = [[0] * 12 for i in range(7)]
+for i in range(7):
+  for j in range(12):
+    count_bins[i][j] = (data['Bin'] == 12 * i + j).sum()
 
+# see if tweet was posted during campaign period
 start_date_2016 = pd.to_datetime('2016-01-01 00:00:00')
 end_date_2016 = pd.to_datetime('2016-05-09 23:59:59')
 
@@ -93,5 +108,18 @@ data['Elections'] = data['Date posted'].apply(lambda x: 1 if (start_date_2016 <=
                                                                   (start_date_2019 <= x <= end_date_2019) or 
                                                                   (start_date_2022 <= x <= end_date_2022) 
                                                                   else 0)
+
+# Heatmap
+fig, ax = plt.subplots()
+im = ax.imshow(count_bins)
+
+ax.set_yticks(ticks=range(7), labels=range(2016,2023))
+ax.set_xticks(ticks=range(12), labels=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Non','Dec'])
+for i in range(7):
+  for j in range(12):
+    count = (data['Bin'] == 12 * i + j).sum()
+    count_bins[i][j] = count
+    ax.text(j, i, count, ha="center", va="center", color="w")
+plt.show()
 
 data.to_csv('./preprocessed.csv')
