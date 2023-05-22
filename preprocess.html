@@ -246,12 +246,19 @@
 						<img src="images/replies_outliers.png" alt=""/>
 						<img src="images/retweets_outliers.png" alt=""/>
 						&nbsp
-						<p>We decided to remove the outliers seen the followers, likes, replies, and retweets z-scores.</p>
+						<p>We decided to remove the outliers seen in the followers, likes, replies, and retweets z-scores.</p>
 						&nbsp
 
 						<h3>Normalization</h3>
-						<p>After removing the outliers we recomputed the z-scores for the following tweets to get a more normal distribution.</p>
+						<p>After removing the outliers we recomputed the z-scores for the following tweets to get a more normal distribution. These are the updated z-scores of the remaining tweets:</p>
 						&nbsp
+						<img src="images/new_following_outliers.png" alt=""/>
+						<img src="images/new_followers_outliers.png" alt=""/>
+						<img src="images/new_likes_outliers.png" alt=""/>
+						<img src="images/new_replies_outliers.png" alt=""/>
+						<img src="images/new_retweets_outliers.png" alt=""/>
+						&nbsp
+						<p>Notice how the data points which were just clumped together before are now more spread out and we can see more features of the data.</p>
 
 						<h3>Data encoding</h3>
 						<p>In code block 4, we mapped the account types to numerical labels. 'Identified', 'Anonymous', and 'Media' were mapped to 0, 1, and 2, respectively. Similarly, we mapped the content types 'Rational', 'Emotional', and 'Transactional' to 0, 1, and 2, respectively.<br>
@@ -259,7 +266,7 @@
 						&nbsp
 
 						<h3>Binning</h3>
-						<p>We decided to bin the tweets by month. January 2016 was placed in bin 0, February 2016 in bin 1, and so on until December 2022 was placed in bin 83.</p>
+						<p>We decided to bin the tweets by month. January 2016 was placed in bin 0, February 2016 in bin 1, and so on until December 2022 was placed in bin 83. These bins were also used to create the heat map found in the visualizations page.</p>
 						&nbsp
 
 						<h3>Feature generation</h3>
