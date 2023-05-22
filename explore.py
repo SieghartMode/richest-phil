@@ -119,7 +119,9 @@ for i in range(7):
   for j in range(12):
     count = (data['Bin'] == 12 * i + j).sum()
     count_bins[i][j] = count
-    ax.text(j, i, count, ha="center", va="center", color="w")
+    col = "black" if count > 20 else "w"
+    ax.text(j, i, count, ha="center", va="center", color=col)
 plt.show()
+plt.savefig("images/heatmap.png")
 
 data.to_csv('./preprocessed.csv')
