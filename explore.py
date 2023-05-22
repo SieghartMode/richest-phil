@@ -8,16 +8,6 @@ import numpy as np
 csv_path = 'data.csv'
 data = pd.read_csv(csv_path, sep=',', parse_dates = ['Date posted'], dayfirst=True)
 
-def date_to_bin(date):
-  return 12 * (date.year - 2016) + date.month - 1
-data['Bin'] = data['Date posted'].dt.date.map(date_to_bin)
-
-count_bins = [[0] * 12 for i in range(7)]
-for i in range(7):
-  for j in range(12):
-    count_bins[i][j] = (data['Bin'] == 12 * i + j).sum()
-print(count_bins)
-
 # Removing irrelevant rows and columns
 data = data.dropna(subset=['Timestamp']) # empty rows
 data = data.dropna(axis=1, how='all') # empty columns
@@ -86,6 +76,11 @@ category_mapping = {
 }
 
 data['Content type'] = data['Content type'].map(category_mapping)
+
+
+def date_to_bin(date):
+  return 12 * (date.year - 2016) + date.month - 1
+data['Bin'] = data['Date posted'].dt.date.map(date_to_bin)
 
 count_bins = [[0] * 12 for i in range(7)]
 for i in range(7):
