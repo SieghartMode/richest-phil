@@ -114,14 +114,18 @@ fig, ax = plt.subplots()
 im = ax.imshow(count_bins)
 
 ax.set_yticks(ticks=range(7), labels=range(2016,2023))
-ax.set_xticks(ticks=range(12), labels=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Non','Dec'])
+ax.set_xticks(ticks=range(12), labels=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'])
 for i in range(7):
   for j in range(12):
     count = (data['Bin'] == 12 * i + j).sum()
     count_bins[i][j] = count
     col = "black" if count > 20 else "w"
     ax.text(j, i, count, ha="center", va="center", color=col)
-plt.show()
+ax.set_title("Number of tweets in each month per year")
+cbar = ax.figure.colorbar(im, ax=ax)
+cbar.ax.set_ylabel("Tweet count", rotation=-90, va="bottom")
+
+#plt.show()
 plt.savefig("images/heatmap.png")
 
 data.to_csv('./preprocessed.csv')
