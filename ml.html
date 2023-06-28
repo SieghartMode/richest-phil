@@ -16,9 +16,7 @@
 		<!-- Nav -->
 			<nav id="nav">
 				<ul class="container">
-					<li><a href="#top">Top</a></li>
-					<li><a href="#overview">Overview</a></li>
-					<li><a href="#data">Data</a></li>
+					<li><a href="index.html">Home</a></li>
 					<li>
 						<div class="dropdown">
 							<a href="#methods">Methods</a>
@@ -30,61 +28,74 @@
 							</div>
 						</div>
 					</li>
-					<li><a href="#results">Results</a></li>
+					<li><a href="results.html">Results</a></li>
 					<li><a href="#team">Team</a></li>
+					<li><a href="#overview">Top</a></li>
 				</ul>
 			</nav>
 
 		<!-- Overview -->
-			<article id="histogram" class="wrapper style1">
+			<article id="overview" class="wrapper style1">
 				<div class="container">
-						<h2>Here's how we visualized our data.</h2>
+					<h1>We used a <strong>line graph model</strong></h1>
+					<h2>and identified peaks, change points, and linear regressions.</h2>
 						&nbsp
-
-						<h1> Histograms </h1>
-						<img src="images/Histogram%20of%20Likes.png" alt="" />
-						<img src="images/Histogram%20of%20Likes%20after%20Preprocessing.png" alt="" />
-						<p>The original histogram of likes above showed a large outlier in the 200's that was significantly different from the rest. After preprocessing, the outliers were removed and the axes were rescaled to make the data easier to see.</p>
-						&nbsp
-						
-						<img src="images/Histogram%20of%20Replies.png" alt="" />
-						<img src="images/Histogram%20of%20Replies%20after%20Preprocessing.png" alt="" />
-						<p>The original histograph showed a large outlier in the 20's that was significantly different from the rest. After preprocessing, the outliers were removed and the axes were rescaled to make the data easier to see.</p>
-						
-						<img src="images/Histogram%20of%20Retweets.png" alt="" />
-						<img src="images/Histogram%20of%20Retweets%20after%20Preprocessing.png" alt="" />
-						<p>The original histograph showed a large outlier in the 60's that was significantly different from the rest. After preprocessing, the outliers were removed and the axes were rescaled to make the data easier to see.</p>
+						<img src="images/model.png" alt="model"/>
+						<p>Here is the final model that we obtained. We'll explain each part of this image in the succeeding parts.</p>
 				</div>
 			</article>
 
-			<article id="heat maps" class="wrapper style2">
+			<article id="line graph" class="wrapper style2">
 				<div class="container">
-						<h1> Heat maps </h1>
-						<img id="binning" src="images/heatmap.png" alt="" />
-						<h3>After Preprocessing</h3>
-						<p>There is notably a lot of tweets in May 2016. This might be because it is near the time of the vice presidential elections which BBM was running in.</p>
+						<h3> Time series graphs </h3>
+						<img src="images/bare_graph.png" width="1320" height="450">
+						<p>A time series graph plots a line to show how a variable changes over time. In this case, we let the x-axis be time (in months) and the y-axis be the frequency of tweets.</p>
 				</div>
 			</article>
 	
-			<article id="bar" class="wrapper style3">
+			<article id="peaks" class="wrapper style3">
 				<div class="container">
 					
-						<h1> Bar/Column Charts </h1>
-						<img src="images/Bar%20Chart%20of%20the%20Tweets%20per%20Month.png" alt="" />
-						<h3>Before Preprocessing</h3>
-						
-						<img src="images/Column%20Chart%20of%20the%20Content%20Types.png" alt="" />
-						<h3>Before Preprocessing</h3>
+						<h3> Peak detection </h3>
+						<p>From the data, we identified the peaks by using a method from the scipy Python package. You can find the codes we used in this <a href="https://colab.research.google.com/drive/1Ywb-BkMapxfFcfDOlBPs7PAoAwN4WeEb?usp=sharing"> Colab notebook</a>. The parameters we used are shown here:</p>
+						<img src="images/peak_algo.png">
+						<p>The main parameters we changed are the height and the distance. The height parameter is set to 6 to mean that we would only consider months with at least 6 tweets. Having 5 or less was too few to be considered a peak, even if it was locally higher than neighboring months.</p>
+						<p>The distance parameter refers to how many months apart peaks should at least be. This was important so that only the most significant peak in every 6 months would be highlighted. This is the resulting graph with peaks marked:</p>
+						<img src="images/peak_graph.png" width="1320" height="450">
 				</div>
 			</article>
 				
-			<article id="line" class="wrapper style2">
+			<article id="change point" class="wrapper style2">
 				<div class="container">
 					
-						<h1> Line Chart </h1>
-						<img src="images/Line%20Chart%20of%20the%20Number%20of%20Tweets%20per%20Year.png" alt="" />
-						<h3>Before Preprocessing</h3>
+						<h3> Change point detection </h3>
+						<p> Change points are the markers in time where the trend in data significantly changed. To detect these points, we use Pelt's algorithm, as implemented by the ruptures Python package. The parameters we used are shown here:</p>
+						<img src="images/changepoint_algo.png">
+						<p>The penalty was set to 1.1 because a smaller value at 0.9 would create too many time periods already, some of which had no corresponding historical events. On the other hand, setting the penalty to at least 1.2 would create a large period in the middle spanning 2018 to 2021. As such, we decided that 1.1 was the most suitable penalty value for our model.</p>
+						<img src="images/changepoint_graph.png">
+						<p>The change points are marked by the red dashed vertical lines.</p>
+				</div>
+			</article>
+
+			<article id="linear" class="wrapper style3">
+				<div class="container">
+					
+						<h3> Segmented Linear Regression </h3>
+						<p> Based on the separation marked by the change points, we applied a linear regression to each time period. We did this using a function by the numpy Python package. The relevant code snippet is shown here:</p>
+						<img src="images/linreg_algo.png">
+						<p>The line was fitted to follow the least squares error, and we also note that the slope and mean for each period is saved to certain lists. We will need those values later for our statistical tests! Here is the resulting segmented linear regression, marked in green:</p>
+						<img src="images/linreg_graph.png" width="1320" height="450">
 						
+				</div>
+			</article>
+
+			<article id="factcheck" class="wrapper style2">
+				<div class="container">
+					<h3> Fact check </h3>
+					<p>While this is outside the scope of our study, our group decided to mark some dates when fact checking articles were published on the topic of the Philippines' false wealth. For further research, one could examine if the emergence of these articles played a part in lowering the amount of misinformation being posted online.</p>
+					<img src="images/factcheck_graph.png" width="1320" height="450">
+					<p> Putting everything together, we obtain our full model:</p>
+					<img src="images/model.png">
 				</div>
 			</article>
 
