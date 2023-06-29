@@ -68,8 +68,13 @@
 						<p>The first condition of independence is not completely met because past events in time affect future events. However, since we bin the frequency into months, we can consider them to have some independence because trends change frequently. This means the result of our test may not be completely accurate, so further studies could improve on this by applying a test that can deal with this issue.</p>
 						<p>The second condition is met because our data is numerical, so we can clearly which mean or slope is greater when comparing two of them.
 						
+						<h2> Results </h2>
+						<p> Now we will apply the Mann Whitney test with significance level of 0.05. By using the mannwhitneyu method in the scipy Python package, we obtained the following p-values:</p>
+						<img src="images/mannwhitney_result.PNG">
+						<p> Since the p-values for both the means and slopes are greater than 0.05, we conclude that there is <strong>not enough evidence to reject the null hypothesis.</strong> The p-value for slopes is notably high, meaning that the difference between the two sets is not very significant. This is because only the first period (corresponding to the 2016 elections) exhibited a very high slope; the other regions had absolute slopes nearer to 0. Thus, the test did not find the difference between the two sets to be stronger than coincidence. This tells us the presence of an election will not necessarily lead to sudden spikes or drops in engagement. Rather, the frequency of tweets tends to stay stable and level. For the means, the p-value is much lower. This suggests that the frequency of tweets during election periods, on average, tends to be higher than during non-election periods.</p>
 				</div>
 			</article>
+
 				
 		<!-- Team -->
 			<article id="team" class="wrapper style4">
