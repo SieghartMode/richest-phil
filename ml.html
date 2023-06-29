@@ -19,7 +19,7 @@
 					<li><a href="index.html">Home</a></li>
 					<li>
 						<div class="dropdown">
-							<a href="#methods">Methods</a>
+							<a href="index.html#methods">Methods</a>
 							<div class="dropdown-content">
 								<a href="preprocess.html">Preprocessing</a>
 								<a href="visual.html">Visualization</a>
@@ -28,7 +28,7 @@
 							</div>
 						</div>
 					</li>
-					<li><a href="results.html">Results</a></li>
+					<li><a href="index.html#results">Results</a></li>
 					<li><a href="#team">Team</a></li>
 					<li><a href="#overview">Top</a></li>
 				</ul>
@@ -40,7 +40,7 @@
 					<h1>We used a <strong>line graph model</strong></h1>
 					<h2>and identified peaks, change points, and linear regressions.</h2>
 						&nbsp
-						<img src="images/model.png" alt="model"/>
+						<img style="width: 1320px; height: 600px; object-fit: cover;" src="images/model.png" alt="model"/>
 						<p>Here is the final model that we obtained. We'll explain each part of this image in the succeeding parts.</p>
 				</div>
 			</article>
@@ -72,7 +72,7 @@
 						<p> Change points are the markers in time where the trend in data significantly changed. To detect these points, we use Pelt's algorithm, as implemented by the ruptures Python package. The parameters we used are shown here:</p>
 						<img src="images/changepoint_algo.PNG">
 						<p>The penalty was set to 1.1 because a smaller value at 0.9 would create too many time periods already, some of which had no corresponding historical events. On the other hand, setting the penalty to at least 1.2 would create a large period in the middle spanning 2018 to 2021. As such, we decided that 1.1 was the most suitable penalty value for our model.</p>
-						<img src="images/changepoint_graph.png">
+						<img style="width: 1320px; height: 600px; object-fit: cover;" src="images/changepoint_graph.png">
 						<p>The change points are marked by the red dashed vertical lines.</p>
 				</div>
 			</article>
@@ -95,7 +95,7 @@
 					<p>While this is outside the scope of our study, our group decided to mark some dates when fact checking articles were published on the topic of the Philippines' false wealth. For further research, one could examine if the emergence of these articles played a part in lowering the amount of misinformation being posted online.</p>
 					<img src="images/factcheck_graph.png" width="1320" height="450">
 					<p> Putting everything together, we obtain our full model:</p>
-					<img src="images/model.png">
+					<img style="width: 1320px; height: 600px; object-fit: cover;" src="images/model.png" alt="model"/>
 				</div>
 			</article>
 
