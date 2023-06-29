@@ -72,7 +72,7 @@
 						<p> Change points are the markers in time where the trend in data significantly changed. To detect these points, we use Pelt's algorithm, as implemented by the ruptures Python package. The parameters we used are shown here:</p>
 						<img src="images/changepoint_algo.PNG">
 						<p>The penalty was set to 1.1 because a smaller value at 0.9 would create too many time periods already, some of which had no corresponding historical events. On the other hand, setting the penalty to at least 1.2 would create a large period in the middle spanning 2018 to 2021. As such, we decided that 1.1 was the most suitable penalty value for our model.</p>
-						<img src="images/changepoint_graph.png">
+						<img style="width: 1320px; height: 600px; object-fit: cover;" src="images/changepoint_graph.png">
 						<p>The change points are marked by the red dashed vertical lines.</p>
 				</div>
 			</article>
