@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Visualization</title>
+		<title>Statistical Test</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -16,9 +16,7 @@
 		<!-- Nav -->
 			<nav id="nav">
 				<ul class="container">
-					<li><a href="#top">Top</a></li>
-					<li><a href="#overview">Overview</a></li>
-					<li><a href="#data">Data</a></li>
+					<li><a href="index.html">Home</a></li>
 					<li>
 						<div class="dropdown">
 							<a href="#methods">Methods</a>
@@ -30,39 +28,28 @@
 							</div>
 						</div>
 					</li>
-					<li><a href="#results">Results</a></li>
+					<li><a href="results.html">Results</a></li>
 					<li><a href="#team">Team</a></li>
+					<li><a href="#overview">Top</a></li>
 				</ul>
 			</nav>
 
 		<!-- Overview -->
-			<article id="histogram" class="wrapper style1">
+			<article id="overview" class="wrapper style1">
 				<div class="container">
-						<h2>Here's how we visualized our data.</h2>
+						<h2>Here is how we performed the statistical tests.</h2>
 						&nbsp
-
-						<h1> Histograms </h1>
-						<img src="images/Histogram%20of%20Likes.png" alt="" />
-						<img src="images/Histogram%20of%20Likes%20after%20Preprocessing.png" alt="" />
-						<p>The original histogram of likes above showed a large outlier in the 200's that was significantly different from the rest. After preprocessing, the outliers were removed and the axes were rescaled to make the data easier to see.</p>
-						&nbsp
-						
-						<img src="images/Histogram%20of%20Replies.png" alt="" />
-						<img src="images/Histogram%20of%20Replies%20after%20Preprocessing.png" alt="" />
-						<p>The original histograph showed a large outlier in the 20's that was significantly different from the rest. After preprocessing, the outliers were removed and the axes were rescaled to make the data easier to see.</p>
-						
-						<img src="images/Histogram%20of%20Retweets.png" alt="" />
-						<img src="images/Histogram%20of%20Retweets%20after%20Preprocessing.png" alt="" />
-						<p>The original histograph showed a large outlier in the 60's that was significantly different from the rest. After preprocessing, the outliers were removed and the axes were rescaled to make the data easier to see.</p>
+						<p> In the <a href="ml.html#linreg"> machine learning </a> section, we were able to identify the slopes and means of each period in the line graph. Here is the resulting data:</p>
+						<img src="images/means_slopes.PNG">
+						<p>Note that there are four periods corresponding to elections and three that are non-election periods.</p>
 				</div>
 			</article>
 
-			<article id="heat maps" class="wrapper style2">
+			<article id="shapiro" class="wrapper style2">
 				<div class="container">
-						<h1> Heat maps </h1>
-						<img id="binning" src="images/heatmap.png" alt="" />
-						<h3>After Preprocessing</h3>
-						<p>There is notably a lot of tweets in May 2016. This might be because it is near the time of the vice presidential elections which BBM was running in.</p>
+						<h1> Shapiro Normality Test </h1>
+						<p>We originally planned to use the ANOVA test to compare the election and non-election sets. As part of the conditions for ANOVA, we needed to test for the normality of the distribution. We plotted the number of bins with size 0, size 1, etc. and made a histogram:</p>
+						<img src="images/bin_histogram.png">
 				</div>
 			</article>
 	
