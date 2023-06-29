@@ -58,7 +58,7 @@
 					
 						<h3> Peak detection </h3>
 						<p>From the data, we identified the peaks by using a method from the scipy Python package. You can find the codes we used in this <a href="https://colab.research.google.com/drive/1Ywb-BkMapxfFcfDOlBPs7PAoAwN4WeEb?usp=sharing"> Colab notebook</a>. The parameters we used are shown here:</p>
-						<img src="images/peak_algo.png">
+						<img src="images/peak_algo.PNG">
 						<p>The main parameters we changed are the height and the distance. The height parameter is set to 6 to mean that we would only consider months with at least 6 tweets. Having 5 or less was too few to be considered a peak, even if it was locally higher than neighboring months.</p>
 						<p>The distance parameter refers to how many months apart peaks should at least be. This was important so that only the most significant peak in every 6 months would be highlighted. This is the resulting graph with peaks marked:</p>
 						<img src="images/peak_graph.png" width="1320" height="450">
@@ -70,7 +70,7 @@
 					
 						<h3> Change point detection </h3>
 						<p> Change points are the markers in time where the trend in data significantly changed. To detect these points, we use Pelt's algorithm, as implemented by the ruptures Python package. The parameters we used are shown here:</p>
-						<img src="images/changepoint_algo.png">
+						<img src="images/changepoint_algo.PNG">
 						<p>The penalty was set to 1.1 because a smaller value at 0.9 would create too many time periods already, some of which had no corresponding historical events. On the other hand, setting the penalty to at least 1.2 would create a large period in the middle spanning 2018 to 2021. As such, we decided that 1.1 was the most suitable penalty value for our model.</p>
 						<img src="images/changepoint_graph.png">
 						<p>The change points are marked by the red dashed vertical lines.</p>
@@ -82,7 +82,7 @@
 					
 						<h3> Segmented Linear Regression </h3>
 						<p> Based on the separation marked by the change points, we applied a linear regression to each time period. We did this using a function by the numpy Python package. The relevant code snippet is shown here:</p>
-						<img src="images/linreg_algo.png">
+						<img src="images/linreg_algo.PNG">
 						<p>The line was fitted to follow the least squares error, and we also note that the slope and mean for each period is saved to certain lists. We will need those values later for our statistical tests! Here is the resulting segmented linear regression, marked in green:</p>
 						<img src="images/linreg_graph.png" width="1320" height="450">
 						
